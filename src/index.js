@@ -35,10 +35,21 @@ document.addEventListener('click', function(event) {
     }
 })
 
+Array.from(document.links).forEach(link => {
+    link.addEventListener('click', function (event) {
+        event.preventDefault()
+        console.log(`The "${event.target.textContent}" is not taking you anywhere`)
+    })
+})
+
 // 👉 TASK 3- Create a function that launches!
 // It should open the confirmation modal.
 // Add it as an event listener for click events on the launch button.
+function launch(event) {
+    modal.classList.remove('off')
+}
 
+launchButton.addEventListener('click', launch)
 
 // 👉 TASK 4- Create a function to confirm the launch.
 // It should close the modal and display a success report.
