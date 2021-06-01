@@ -19,10 +19,21 @@ const modal = document.querySelector('div.modal')
 //  A- HTML inside index.html
 //  B- The DOM's element.onclick attribute
 launchButton.onclick = function (event) {
-    console.log(event)
+    console.log('this overrides the html onclick because of defer')
 }
 //  C- element.addEventListener('click', callback)
+launchButton.addEventListener('click', function (event) {
+    console.log("this doesn't override anything")
+    console.log(event.timeStamp)
+})
 
+document.addEventListener('click', function(event) {
+    if (event.target === launchButton) {
+        console.log('clicked on the launch button')
+    } else {
+        console.log('click somewhere else')
+    }
+})
 
 // 👉 TASK 3- Create a function that launches!
 // It should open the confirmation modal.
